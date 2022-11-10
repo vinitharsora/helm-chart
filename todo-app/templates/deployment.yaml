@@ -8,13 +8,13 @@ metadata:
     app: {{ include "todo-app.name" .}}
 spec:
   replicas: {{ .Values.replicaCount }}
-  progressDeadlineSeconds: 120
-  minReadySeconds: 30
+  progressDeadlineSeconds: {{ .Values.progressDeadlineSecondsCount }}
+  minReadySeconds: {{ .Values.minReadySecondsCount }}
   strategy:
-    type: RollingUpdate
+    type: {{ .Values.strategy.type }}
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
+      maxSurge: {{ .Values.strategy.rollingUpdate.maxSurge }}
+      maxUnavailable: {{ .Values.strategy.rollingUpdate.maxUnavailable }}
   selector:
     matchLabels:
       app: {{ include "todo-app.name" .}}
@@ -28,9 +28,9 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.repository }}
-          imagePullPolicy: Always
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 3000
+            - containerPort: {{ .Values.appContainer.containerPort }}
           env:
             - name: NODE_ENV
               valueFrom:
@@ -41,69 +41,69 @@ spec:
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: todo-app-config
+                  name: {{ include "todo-app.name" . }}-config
                   key: DB_HOST
                   optional: true
             - name: DB_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: todo-app-config
+                  name: {{ include "todo-app.name" . }}-config
                   key: DB_NAME
                   optional: true
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: todo-app-secret
+                  name: {{ include "todo-app.name" . }}-secret
                   key: DB_PASSWORD
                   optional: true
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: todo-app-secret
+                  name: {{ include "todo-app.name" . }}-secret
                   key: DB_USER
                   optional: true
           envFrom:
             - configMapRef:
-                name: todo-app-config
+                name: {{ include "todo-app.name" . }}-config
           readinessProbe:
             httpGet:
-              path: /healthz
-              port: 3000
-            initialDelaySeconds: 60
-            periodSeconds: 10
+              path: {{ .Values.readinessProbe.httpGet.path }}
+              port: {{ .Values.readinessProbe.httpGet.port }}
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           livenessProbe:
             httpGet:
-              path: /healthz
-              port: 3000
-            initialDelaySeconds: 60
-            periodSeconds: 10
+              path: {{ .Values.readinessProbe.httpGet.path }}
+              port: {{ .Values.readinessProbe.httpGet.port }}
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           resources:
             requests:
-              memory: "100Mi"
-              cpu: "500m"
+              memory: {{ .Values.requests.memory }}
+              cpu: {{ .Values.requests.cpu }}
             limits:
-              memory: "256Mi"
-              cpu: "1000m"
+              memory: {{ .Values.limits.memory }}
+              cpu: {{ .Values.limits.cpu }}
       initContainers:
-        - name: db-migration-flyway
-          image: csye7125fall2022group07/db-migrate-flyway:v2
+        - name: {{ .Values.initContainer.name }}
+          image: {{ .Values.initContainer.image }}
           env:
             - name: FLYWAY_URL
               valueFrom:
                 configMapKeyRef:
-                  name: todo-app-config
+                  name: {{ include "todo-app.name" . }}-config
                   key: FLYWAY_ENDPOINT
                   optional: true
             - name: FLYWAY_USER
               valueFrom:
                 secretKeyRef:
-                  name: todo-app-secret
+                  name: {{ include "todo-app.name" . }}-secret
                   key: DB_USER
                   optional: true
             - name: FLYWAY_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: todo-app-secret
+                  name: {{ include "todo-app.name" . }}-secret
                   key: DB_PASSWORD
                   optional: true
-          args: ["migrate"]
+          args: [{{ .Values.initContainer.args | quote }}]

@@ -22,3 +22,16 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "1.16.0"
+
+# github source
+sources:
+  - https://github.com/cyse7125-fall2022-group07/helm-chart
+
+# Team member details
+maintainers:
+  - name: Vinit Harsora
+    email: harsora.v@northeastern.edu
+  - name: Harshal Jaiswal
+    email: jaiswal.ha@northeastern.edu
+  - name: Shrawani Karpe
+    email: karpe.s@northeastern.edu
