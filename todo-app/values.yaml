@@ -1,9 +1,10 @@
 data:
-  DB_USER: Y3N5ZTcxMjU=
-  DB_PASSWORD: Y3N5ZTcxMjVwYXNz
-  NODE_ENV: webapp
-  DB_NAME: rdsdbcsye7125
-
+  DB_USER: ""
+  DB_PASSWORD: ""
+  NODE_ENV: ""
+  DB_NAME: ""
+  FLYWAY_ENDPOINT: ""
+  DB_HOST: ""
 
 replicaCount: 3
 
@@ -11,7 +12,7 @@ progressDeadlineSecondsCount: 120
 
 minReadySecondsCount: 30
 
-namespace: "kubernetes-dashboard"
+namespace: ""
 
 strategy:
   type: RollingUpdate
@@ -19,17 +20,17 @@ strategy:
     maxSurge: 1
     maxUnavailable: 0
 
-imagePullSecrets: "regcred"
+imagePullSecrets: ""
 
 image:
   name: todo
-  repository: csye7125fall2022group07/todo-app:v9
+  repository: ""
   pullPolicy: Always
 
 initContainer:
   args: migrate
   name: db-migration-flyway
-  image: csye7125fall2022group07/db-migrate-flyway:v2
+  image: ""
 
 appContainer:
   containerPort: 3000
