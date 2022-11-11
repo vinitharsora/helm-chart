@@ -10,6 +10,8 @@ data:
   NODE_ENV: {{ .Values.data.NODE_ENV }}
   DB_NAME: {{ .Values.data.DB_NAME }}
   # FLYWAY_ENDPOINT: jdbc:postgresql://rdsdbcsye7125.csi5naarmk9u.us-east-1.rds.amazonaws.com:5432/rdsdbcsye7125
-  FLYWAY_ENDPOINT: $FLYWAY_ENDPOINT
+  # FLYWAY_ENDPOINT: $FLYWAY_ENDPOINT
+  FLYWAY_ENDPOINT: {{ .Values.data.FLYWAY_ENDPOINT }}
   # DB_HOST: rdsdbcsye7125.csi5naarmk9u.us-east-1.rds.amazonaws.com
-  DB_HOST: $DB_HOST
+  # DB_HOST: $DB_HOST
+  DB_HOST: {{ .Values.data.DB_HOST }}
