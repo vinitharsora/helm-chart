@@ -1,4 +1,5 @@
 {
+        "name": "helm-charts",
         "release": {
             "branches": ["a5"]
         }
