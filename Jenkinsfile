@@ -11,7 +11,7 @@ pipeline {
 		stage('create semantic version')
 		{
 			steps{
-                sh "echo('sem var')"
+                sh 'date'
 			}
 		}
     }
