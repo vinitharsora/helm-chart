@@ -13,9 +13,8 @@ jobs:
       - name: Fetch history
         run: git fetch --prune --unshallow
     
-      - name: Lint Helm charts
-        uses: helm/chart-testing-action@v1.0.0
+      - name: Run chart-testing (lint)
+        id: lint
+        uses: HexF/chart-testing-action@v3.0.0
         with:
-          command: helm lint
-          arguments: -syntax-only
-          target: ./helm-chart/todo-app
+          command: lint
