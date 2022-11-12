@@ -12,6 +12,7 @@ pipeline {
                 sh "ls -lart ./*"
                 sh 'cat package.json'
                 sh 'echo  { "release": { "branches": [ "a5" ] }} >> package.json'
+                sh 'cat package.json'
 
             }
         }
