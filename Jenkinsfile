@@ -11,7 +11,7 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: 'a5']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'cloudcreds', url: 'https://github.com/Shrawani04/helm-chart.git']]])
                 sh "ls -lart ./*"
                 sh 'cat package.json'
-                sh 'pwd'
+                sh 'echo  { "release": { "branches": [ "a5" ] }} >> package.json'
 
             }
         }
