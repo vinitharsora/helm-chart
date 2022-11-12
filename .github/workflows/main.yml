@@ -16,4 +16,3 @@ jobs:
           cd helm-chart/todo-app
           helm lint .
           helm template .
-        shell: bash
