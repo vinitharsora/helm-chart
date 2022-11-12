@@ -10,9 +10,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run script file
+      - name: Run script file for Linting
         run: |
           pwd
           cd todo-app
           helm lint .
+        shell: bash
+
+      - name: Run script file for Template
+        run: |
+          pwd
+          cd todo-app
           helm template .
+        shell: bash
