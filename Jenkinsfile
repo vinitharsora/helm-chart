@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    env{
+        current_version = currentVersion()
+        next_version = nextVersion()
+    }
 
     stages {
         stage('Build') {
@@ -11,8 +15,13 @@ pipeline {
 		stage('create semantic version')
 		{
 			steps{
-                sh 'date'
-                sh 'pwd'
+                sh """
+                pwd
+                date
+                echo $current_version
+                echo $next_version
+                """
+                
 			}
 		}
     }
