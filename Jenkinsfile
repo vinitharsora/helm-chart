@@ -24,6 +24,7 @@ pipeline {
                 pwd
                 ls -lrta
                 cat package.json
+                npx semantic-release
 		        '''
 		    }
 		}
