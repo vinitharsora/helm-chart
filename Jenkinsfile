@@ -12,30 +12,17 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: 'a5']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'cloudcreds', url: 'https://github.com/Shrawani04/helm-chart.git']]])
                 sh "ls -lart ./*"
                 sh 'cat package.json'
-                sh 'cat package.json'
 
             }
         }
-		stage('install npm')
-		{
-			steps{
-                sh """
-                pwd
-                date
-                node --version
-                npm -v
-                """
-                
-			}
-		}
 		stage('semantic-release')
 		{
 		    steps{
 		        sh '''
                 pwd
-		         npm install --save-dev semantic-release
-		         npx semantic-release
+		        npm install @semantic-release/exec -D
                 pwd
+                ls -lrta
 		        '''
 		    }
 		}
