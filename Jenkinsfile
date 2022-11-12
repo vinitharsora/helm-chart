@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    env{
+    environment {
         current_version = currentVersion()
         next_version = nextVersion()
     }
