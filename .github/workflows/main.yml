@@ -13,6 +13,6 @@ jobs:
       - name: Run script file
         run: |
           pwd
-          cd helm-chart/todo-app
+          cd helm-chart
           helm lint .
           helm template .
