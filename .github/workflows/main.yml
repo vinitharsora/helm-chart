@@ -12,7 +12,7 @@ jobs:
 
       - name: Run script file
         run: |
-          cd ./helm-chart/todo-app
+          cd helm-chart/todo-app
           helm lint .
           helm template .
         shell: bash
