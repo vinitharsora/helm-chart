@@ -1,10 +1,7 @@
 pipeline {
     agent any
-    environment {
-        current_version = currentVersion()
-        next_version = nextVersion()
-    }
-
+  
+    tools {nodejs "nodejs"}
     stages {
         stage('Build') {
             steps {
@@ -12,17 +9,26 @@ pipeline {
                 sh "ls -lart ./*"
             }
         }
-		stage('create semantic version')
+		stage('install npm')
 		{
 			steps{
                 sh """
                 pwd
                 date
-                echo $current_version
-                echo $next_version
+                node --version
+                npm -v
                 """
                 
 			}
+		}
+		stage('semantic-release')
+		{
+		    steps{
+		        sh '''
+		         npm install --save-dev semantic-release
+		         npx semantic-release
+		        '''
+		    }
 		}
     }
 }
