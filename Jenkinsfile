@@ -23,6 +23,7 @@ pipeline {
 		        npm install @semantic-release/exec -D
                 pwd
                 ls -lrta
+                cat package.json
 		        '''
 		    }
 		}
