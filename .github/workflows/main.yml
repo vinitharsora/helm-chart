@@ -16,4 +16,6 @@ jobs:
       - name: Lint Helm charts
         uses: helm/chart-testing-action@v1.0.0
         with:
-          command: lint
+          command: helm lint
+          arguments: -syntax-only
+          target: ./helm-chart/todo-app
