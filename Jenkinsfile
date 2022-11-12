@@ -10,6 +10,8 @@ pipeline {
 
                 checkout([$class: 'GitSCM', branches: [[name: 'a5']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'cloudcreds', url: 'https://github.com/Shrawani04/helm-chart.git']]])
                 sh "ls -lart ./*"
+                sh 'pwd'
+
             }
         }
 		stage('install npm')
@@ -28,8 +30,10 @@ pipeline {
 		{
 		    steps{
 		        sh '''
+                pwd
 		         npm install --save-dev semantic-release
 		         npx semantic-release
+                pwd
 		        '''
 		    }
 		}
