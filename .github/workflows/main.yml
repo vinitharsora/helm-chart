@@ -13,6 +13,6 @@ jobs:
       - name: Run script file
         run: |
           pwd
-          cd helm-chart
+          cd /home/runner/work/helm-chart/helm-chart
           helm lint .
           helm template .
