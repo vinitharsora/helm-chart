@@ -1,5 +1,5 @@
 {
-  "branches": ["A5"],
+  "branches": ["Assignment5"],
   "repositoryUrl": "https://github.com/vinitharsora/helm-chart.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
