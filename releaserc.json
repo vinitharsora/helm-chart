@@ -1,6 +1,7 @@
 {
   "branches": "A5",
   "repositoryUrl": "https://github.com/vinitharsora/helm-chart.git",
+  "debug": "false",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
