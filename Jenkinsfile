@@ -23,7 +23,7 @@ pipeline {
     tools {nodejs "node"}
     
     environment {
-        GITHUB_TOKEN = credentials('ce2ba2a2-a1a3-4688-87e2-22604c703f75')
+        GITHUB_TOKEN = credentials('git')
     }
 
     stages {
@@ -42,7 +42,7 @@ pipeline {
         // }
         stage('Create Semantic Versioning') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'ce2ba2a2-a1a3-4688-87e2-22604c703f75', usernameVariable : 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'git', usernameVariable : 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh '''
                     npm install @semantic-release/git
                     npm install @semantic-release/github
