@@ -23,7 +23,7 @@ pipeline {
     tools {nodejs "node"}
     
     environment {
-        GITHUB_TOKEN = credentials('gitrepo')
+        GITHUB_TOKEN = credentials('ce2ba2a2-a1a3-4688-87e2-22604c703f75')
     }
 
     stages {
