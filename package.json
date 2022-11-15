@@ -1,0 +1,23 @@
+{
+  "name": "helm-chart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinitharsora/helm-chart/issues"
+  },
+  "homepage": "https://github.com/vinitharsora/helm-chart#readme",
+  "dependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.6",
+    "semantic-release-helm": "^2.2.0",
+    "semantic-release-yaml": "^1.1.3"
+  }
+}
