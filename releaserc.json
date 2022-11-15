@@ -1,5 +1,5 @@
 {
-  "branches": "A5",
+  "branches": ["A5"],
   "repositoryUrl": "https://github.com/vinitharsora/helm-chart.git",
   "debug": "false",
   "plugins": [
