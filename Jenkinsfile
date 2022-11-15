@@ -44,7 +44,11 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'ce2ba2a2-a1a3-4688-87e2-22604c703f75', usernameVariable : 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh '''
-                    npm install --dev
+                    npm install @semantic-release/git
+                    npm install @semantic-release/changelog
+                    npm install semantic-release-helm
+                    npm install @semantic-release/exec
+                    npm install semantic-release-yaml
                     ls -al
                     GITHUB_TOKEN=$PASSWORD npx semantic-release
                     '''
