@@ -15,7 +15,8 @@
     [
       "@semantic-release/git", {
       "assets": [
-        {"path": "./todo-app/Chart.yaml"}
+        {"path": "./todo-app/Chart.yaml"},
+        {"path": "./CHANGELOG.md"}
       ]
     }],
     "@semantic-release/github"
