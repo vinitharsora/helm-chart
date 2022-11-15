@@ -42,7 +42,7 @@ pipeline {
         // }
         stage('Create Semantic Versioning') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'gitrepo', usernameVariable : 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'ce2ba2a2-a1a3-4688-87e2-22604c703f75', usernameVariable : 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh '''
                     npm install --dev
                     ls -al
