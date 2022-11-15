@@ -53,12 +53,12 @@ pipeline {
                     GITHUB_TOKEN=$PASSWORD npx semantic-release
                     '''
                 }
-                // cd ./appdeployment
+                // cd ./todo-app
                 // sh '''
                 // npm install --dev
                 // GITHUB_TOKEN=$GITHUB_TOKEN npx semantic-release
                 // '''
-                // cd ./appdeployment
+                // cd ./todo-app
                 // ls -al
                 // sed 's/'${CURRENT_VERSION}'/'${NEXT_VERSION}'/g' ./Chart.yaml
                 // cat Chart.yaml

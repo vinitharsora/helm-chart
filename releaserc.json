@@ -1,0 +1,50 @@
+{
+  "branches": "A5",
+  "repositoryUrl": "https://github.com/vinitharsora/helm-chart.git",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "semantic-release-helm3",
+      {
+        "chartPath": "./todo-app/",
+        "onlyUpdateVersion": true
+      }
+    ],
+    [
+      "@semantic-release/git", {
+      "assets": [
+        {"path": "./todo-app/Chart.yaml"}
+      ]
+    }],
+    "@semantic-release/github"
+  ],
+  "release": {
+    "verifyConditions": {
+      "path": ["@semantic-release/changelog", "@semantic-release/github", "@semantic-release/git"]
+    },
+    "analyzeCommits": [
+      "@semantic-release/commit-analyzer"
+    ],
+    "generateNotes": [
+      "@semantic-release/release-notes-generator", {
+        "preset": "angular",
+        "writerOpts": {
+          "commitsSort": ["header"]
+        }
+      }
+    ],
+    "prepare": [
+      "semantic-release-helm3",
+      "@semantic-release/git",
+      {
+        "path": "@semantic-release/changelog",
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    "publish": "@semantic-release/github",
+    "success": "@semantic-release/github",
+    "fail": "@semantic-release/github"
+  }
+}
