@@ -47,8 +47,6 @@ pipeline {
                     npm install @semantic-release/git
                     npm install @semantic-release/changelog
                     npm install semantic-release-helm
-                    npm install @semantic-release/exec
-                    npm install semantic-release-yaml
                     ls -al
                     GITHUB_TOKEN=$PASSWORD npx semantic-release
                     '''

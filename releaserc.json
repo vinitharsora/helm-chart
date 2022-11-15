@@ -7,7 +7,7 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     [
-      "semantic-release-helm3",
+      "semantic-release-helm",
       {
         "chartPath": "./todo-app/",
         "onlyUpdateVersion": true
@@ -37,7 +37,7 @@
       }
     ],
     "prepare": [
-      "semantic-release-helm3",
+      "semantic-release-helm",
       "@semantic-release/git",
       {
         "path": "@semantic-release/changelog",
