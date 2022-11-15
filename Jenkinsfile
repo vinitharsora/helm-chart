@@ -33,13 +33,6 @@ pipeline {
                 checkout scm
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         cleanWs()
-        //         checkout([$class: 'GitSCM', branches: [[name: '*/assignment5']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'gitrepo', url: 'https://github.com/rolwynquadras/helm-chart.git']]])
-        //         // sh "ls -lart ./*"
-        //     }
-        // }
         stage('Create Semantic Versioning') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'git', usernameVariable : 'USERNAME', passwordVariable: 'PASSWORD')]) {
