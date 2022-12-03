@@ -5,6 +5,9 @@ data:
   DB_NAME: ""
   FLYWAY_ENDPOINT: ""
   DB_HOST: ""
+  elastic_endpoint: ""
+  kafka_broker: ""
+  kafka_topic: "todotask"
 
 replicaCount: 3
 
@@ -30,7 +33,7 @@ image:
 initContainer:
   args: migrate
   name: db-migration-flyway
-  image: ""
+  image: "csye7125fall2022group07/db-migrate-flyway:v2"
 
 appContainer:
   containerPort: 3000

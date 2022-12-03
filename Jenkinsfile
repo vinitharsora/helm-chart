@@ -35,5 +35,11 @@ pipeline {
         always {
             echo 'Post task!'
         }
+
     }
+    // post{
+    //     always{
+    //         cleanWs()
+    //     }
+    // }
 }
