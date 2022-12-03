@@ -25,6 +25,7 @@ pipeline {
                 ls -lrta
                 cat package.json
                 npx semantic-release
+                npx semantic-release-cli
 		        '''
 		    }
 		}

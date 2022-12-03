@@ -15,3 +15,6 @@ data:
   # DB_HOST: rdsdbcsye7125.csi5naarmk9u.us-east-1.rds.amazonaws.com
   # DB_HOST: $DB_HOST
   DB_HOST: {{ .Values.data.DB_HOST }}
+  ELASTIC_ENDPOINT: {{ .Values.data.elastic_endpoint }}
+  KAFKA_BROKER: {{ .Values.data.kafka_broker }}
+  KAFKA_TOPIC: {{ .Values.data.kafka_topic }}

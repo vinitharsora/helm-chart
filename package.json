@@ -1,7 +1,20 @@
 {
-        "name": "helm-charts",
-        "release": {
-            "branches": ["a5"]
-        }
-    
+  "name": "helm-charts",
+  "release": {
+    "branches": [
+      "a5"
+    ]
+  },
+  "version": "0.0.0-development",
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shrawani04/helm-chart.git"
+  },
+  "devDependencies": {
+    "@semantic-release/github": "^8.0.6",
+    "semantic-release": "^19.0.5"
+  }
 }
