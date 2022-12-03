@@ -1,34 +1,41 @@
+
+
 pipeline {
     agent any
-    environment{
-        GITHUB_TOKEN = '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'
+    
+    tools {nodejs "node"}
+    
+    environment {
+        GITHUB_TOKEN = credentials('admin')
     }
-    tools {nodejs "nodejs"}
+
     stages {
-        stage('Build') {
+        stage('Checkout code') {
             steps {
                 cleanWs()
-                // sh'npm cache clean'
-                checkout([$class: 'GitSCM', branches: [[name: 'a5']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'cloudcreds', url: 'https://github.com/Shrawani04/helm-chart.git']]])
-                sh "ls -lart ./*"
-                sh 'cat package.json'
-
+                checkout scm
             }
         }
-		stage('semantic-release')
-		{
-		    steps{
-		        sh '''
-                pwd
-		        npm install @semantic-release/exec -D
-                pwd
-                ls -lrta
-                cat package.json
-                npx semantic-release
-                npx semantic-release-cli
-		        '''
-		    }
-		}
+        stage('Create Semantic Versioning') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'admin', usernameVariable : 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh '''
+                    npm install @semantic-release/git
+                    npm install @semantic-release/github
+                    npm install @semantic-release/changelog
+                    npm install semantic-release-helm
+                    ls -al
+                    GITHUB_TOKEN=$PASSWORD npx semantic-release
+                    '''
+                }
+            }
+        }
+    }
+    post { 
+        always {
+            echo 'Post task!'
+        }
+
     }
     // post{
     //     always{
