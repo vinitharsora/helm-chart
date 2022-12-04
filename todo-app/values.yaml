@@ -36,24 +36,24 @@ initContainer:
   image: "csye7125fall2022group07/db-migrate-flyway:v2"
 
 appContainer:
-  containerPort: 3000
+  containerPort: 3030
 
 
 service:
   type: LoadBalancer
-  port: 3000
-  targetPort: 3000
+  port: 3030
+  targetPort: 3030
 
 readinessProbe:
   httpGet:
     path: /healthz
-    port: 3000
+    port: 3030
   initialDelaySeconds: 60
   periodSeconds: 10
 livenessProbe:
   httpGet:
     path: /healthz
-    port: 3000
+    port: 3030
   initialDelaySeconds: 60
   periodSeconds: 10
 
