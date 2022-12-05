@@ -5,6 +5,7 @@ pipeline {
 
     environment {
         GITHUB_TOKEN = credentials('admin')
+        GIT_BRANCH='main'
     }
 
     stages {
