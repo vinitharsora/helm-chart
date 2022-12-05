@@ -1,25 +1,25 @@
-# name: Chart Lint
-# on:
-#   pull_request:
-#     branches: [ main ]
-# jobs:
-#   lint:
-#     name: Lint
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
+name: Chart Lint
+on:
+  pull_request:
+    branches: [ main ]
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-#       - name: Run script file for Linting
-#         run: |
-#           pwd
-#           cd todo-app
-#           helm lint .
-#         shell: bash
+      - name: Run script file for Linting
+        run: |
+          pwd
+          cd todo-app
+          helm lint .
+        shell: bash
 
-#       - name: Run script file for Template
-#         run: |
-#           pwd
-#           cd todo-app
-#           helm template .
-#         shell: bash
+      - name: Run script file for Template
+        run: |
+          pwd
+          cd todo-app
+          helm template .
+        shell: bash
