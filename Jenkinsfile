@@ -1,7 +1,7 @@
 node
 {
    stage('Clone repository') {
-        git branch: 'main', credentialsId: '${env.JENKINS_CRED_ID}', url: 'https://${env.TOKEN_GITHUB}@github.com/cyse7125-fall2022-group07/helm-chart.git'
+        git branch: 'main', credentialsId: '${env.JENKINS_CRED_ID}', url: 'https://${env.GITHUB_TOKEN}@github.com/cyse7125-fall2022-group07/helm-chart.git'
     }
 
    stage('release')
