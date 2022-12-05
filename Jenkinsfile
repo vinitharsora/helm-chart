@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    
+
     tools {nodejs "node"}
-    
+
     environment {
         GITHUB_TOKEN = credentials('admin')
     }
@@ -29,7 +29,7 @@ pipeline {
             }
         }
     }
-    post { 
+    post {
         always {
             echo 'Post task!'
         }
