@@ -29,6 +29,7 @@ image:
   name: todo
   repository: ""
   pullPolicy: Always
+  tag: fall2022-v1
 
 initContainer:
   args: migrate
