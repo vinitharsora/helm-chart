@@ -25,7 +25,7 @@ pipeline {
                     npm install @semantic-release/changelog
                     npm install semantic-release-helm
                     ls -al
-                    GITHUB_TOKEN=$PASSWORD npx semantic-release
+                    GITHUB_TOKEN=$PASSWORD npx semantic-release --branches main
                     '''
                 }
             }
