@@ -1,5 +1,5 @@
 {
-  "branches": ["origin/main", "main"],
+  "branches": ["main"],
   "repositoryUrl": "https://github.com/cyse7125-fall2022-group07/helm-chart.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
