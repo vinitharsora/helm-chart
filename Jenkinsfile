@@ -1,16 +1,37 @@
-node
-{
-   stage('Clone repository') {
-        git branch: 'main', credentialsId: '${env.JENKINS_CRED_ID}', url: 'https://${env.GITHUB_TOKEN}@github.com/cyse7125-fall2022-group07/helm-chart.git'
+pipeline {
+    agent any
+    
+    tools {nodejs "node"}
+    
+    environment {
+        GITHUB_TOKEN = credentials('admin')
     }
 
-   stage('release')
-    {
-        sh "npm install @semantic-release/git -D"
-        sh "npm install semantic-release-helm -D"
-        sh "npm install @semantic-release/exec -D"
-        sh  "npm install semantic-release-yaml -D"
-        sh  "npx semantic-release"
-        
+    stages {
+        stage('Checkout code') {
+            steps {
+                cleanWs()
+                checkout scm
+            }
+        }
+        stage('Create Semantic Versioning') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'admin', usernameVariable : 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh '''
+                    npm install @semantic-release/git
+                    npm install @semantic-release/github
+                    npm install @semantic-release/changelog
+                    npm install semantic-release-helm
+                    ls -al
+                    GITHUB_TOKEN=$PASSWORD npx semantic-release
+                    '''
+                }
+            }
+        }
+    }
+    post { 
+        always {
+            echo 'Post task!'
+        }
     }
 }
