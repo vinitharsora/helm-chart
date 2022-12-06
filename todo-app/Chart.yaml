@@ -3,7 +3,7 @@ name: todo-app
 description: A Helm chart for Kubernetes
 type: application
 version: 1.1.1
-appVersion: 1.16.4
+appVersion: 1.16.5
 sources:
   - https://github.com/cyse7125-fall2022-group07/helm-chart
 maintainers:
@@ -13,3 +13,4 @@ maintainers:
     email: jaiswal.ha@northeastern.edu
   - name: Shrawani Karpe
     email: karpe.s@northeastern.edu
+gu
