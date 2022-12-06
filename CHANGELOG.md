@@ -5,6 +5,13 @@
 
 * **pencil:** updated change ([7284759](https://github.com/cyse7125-fall2022-group07/helm-chart/commit/728475939712686889cb804b1bb8af7e2ae1ef29))
 
+## [1.1.1](https://github.com/cyse7125-fall2022-group07/helm-chart/compare/v1.1.0...v1.1.1) (2022-12-06)
+
+
+### Bug Fixes
+
+* **pencil:** updated change ([7284759](https://github.com/cyse7125-fall2022-group07/helm-chart/commit/728475939712686889cb804b1bb8af7e2ae1ef29))
+
 # [1.1.0](https://github.com/cyse7125-fall2022-group07/helm-chart/compare/v1.0.2...v1.1.0) (2022-12-06)
 
 
