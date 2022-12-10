@@ -1,12 +1,11 @@
-
-
 pipeline {
     agent any
-    
+
     tools {nodejs "node"}
-    
+
     environment {
         GITHUB_TOKEN = credentials('admin')
+        GIT_BRANCH='main'
     }
 
     stages {
@@ -31,15 +30,9 @@ pipeline {
             }
         }
     }
-    post { 
+    post {
         always {
             echo 'Post task!'
         }
-
     }
-    // post{
-    //     always{
-    //         cleanWs()
-    //     }
-    // }
 }

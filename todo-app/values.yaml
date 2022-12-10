@@ -9,7 +9,7 @@ data:
   kafka_broker: ""
   kafka_topic: "todotask"
 
-replicaCount: 3
+replicaCount: 2
 
 progressDeadlineSecondsCount: 120
 
@@ -38,9 +38,8 @@ initContainer:
 appContainer:
   containerPort: 3030
 
-
 service:
-  type: LoadBalancer
+  # type: LoadBalancer
   port: 3030
   targetPort: 3030
 
@@ -67,6 +66,7 @@ limits:
 
 autoscaling:
   enabled: true
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 5
   targetCPUUtilizationPercentage: 5
+
